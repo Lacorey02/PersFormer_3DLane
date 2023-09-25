@@ -1,9 +1,9 @@
-opencv_python==4.2.0.32
+opencv_python
 Shapely==1.7.0
 xmljson==0.2.0
 thop==0.0.31.post2005241907
 matplotlib==3.5.1
-scipy==1.4.1
+scipy
 p_tqdm==1.3.3
 lxml==4.5.0
 tqdm==4.43.0
