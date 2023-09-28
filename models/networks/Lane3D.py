@@ -366,9 +366,16 @@ class LanePredictionHead(nn.Module):
                 # print("batch_idx device: " + str(v_arange.device))
                 # print("x_feature_map device: " + str(x_feature_map.device))
 
+                # print('DEBUG:', sheared_feature_map.shape, sheared_feature_map.dtype)
+                # print('DEBUG:', x_feature_map.shape, x_feature_map.dtype)
+                # print('DEBUG:', v_arange.shape, v_arange.dtype)
+                # print('DEBUG:', self.fmap_mapping_interp_index[:,:,0].shape, self.fmap_mapping_interp_index[:,:,0].dtype)
+                # print('DEBUG:', self.fmap_mapping_interp_weight[:,:,0].shape, self.fmap_mapping_interp_weight[:,:,0].dtype)
+
+
                 sheared_feature_map[batch_idx] = \
-                    x_feature_map[:, v_arange, self.fmap_mapping_interp_index[:,:,0]] * self.fmap_mapping_interp_weight[:,:,0] + \
-                    x_feature_map[:, v_arange, self.fmap_mapping_interp_index[:,:,1]] * self.fmap_mapping_interp_weight[:,:,1]
+                    x_feature_map[:, v_arange, self.fmap_mapping_interp_index[:,:,0].long()] * self.fmap_mapping_interp_weight[:,:,0] + \
+                    x_feature_map[:, v_arange, self.fmap_mapping_interp_index[:,:,1].long()] * self.fmap_mapping_interp_weight[:,:,1]
             x = torch.cat((x, sheared_feature_map), dim=3)
 
         x = self.features(x)
