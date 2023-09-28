@@ -27,8 +27,8 @@ def config(args):
 
     # 1000 sequence
     args.dataset_name = 'openlane'
-    args.dataset_dir = '/mnt/disk01/openlane/images/'
-    args.data_dir = '/mnt/disk01/openlane/lane3d_1000/'
+    args.dataset_dir = 'D:/Openlane/images/'
+    args.data_dir = 'D:/Openlane/lane3d_300/'
 
     if 'openlane' in args.dataset_name:
         openlane_config(args)
@@ -39,7 +39,7 @@ def config(args):
     args.save_path = ops.join(args.save_prefix, args.dataset_name)
 
     # for the case only running evaluation
-    args.evaluate = False
+    args.evaluate = True
     args.evaluate_case = False
 
     # settings for save and visualize
@@ -47,7 +47,7 @@ def config(args):
     args.save_freq = 50
 
     # data loader
-    args.nworkers = 4
+    args.nworkers = 2
 
     # run the training
     # args.mod = 'debug'
